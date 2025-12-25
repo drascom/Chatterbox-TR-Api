@@ -19,22 +19,22 @@ services:
 
     # --- GPU Access ---
     # Modern method (Recommended for newer Docker/NVIDIA setups)
-    devices:
-      - nvidia.com/gpu=all
-    device_cgroup_rules:
-      - "c 195:* rmw" # Needed for some NVIDIA container toolkit versions
-      - "c 236:* rmw" # Needed for some NVIDIA container toolkit versions
+    # devices:
+    #   - nvidia.com/gpu=all
+    # device_cgroup_rules:
+    #   - "c 195:* rmw" # Needed for some NVIDIA container toolkit versions
+    #   - "c 236:* rmw" # Needed for some NVIDIA container toolkit versions
 
     # Legacy method (Alternative for older Docker/NVIDIA setups)
     # If the 'devices' block above doesn't work, comment it out and uncomment
     # the 'deploy' block below. Do not use both simultaneously.
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1 # Or specify specific GPUs e.g., "device=0,1"
-    #           capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # Or specify specific GPUs e.g., "device=0,1"
+              capabilities: [gpu]
     # --- End GPU Access ---
 
     restart: unless-stopped
