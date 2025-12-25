@@ -35,7 +35,7 @@ services:
             - driver: nvidia
               count: 1 # Or specify specific GPUs e.g., "device=0,1"
               capabilities: [gpu]
-    # --- End GPU Access ---
+    # --- End GPU Access ---b
 
     restart: unless-stopped
     environment:
