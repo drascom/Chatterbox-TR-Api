@@ -53,13 +53,8 @@ def load_model() -> bool:
     Returns:
         bool: True if the model was loaded successfully, False otherwise.
     """
-    global (
-        chatterbox_model,
-        MODEL_LOADED,
-        model_device,
-        chatterbox_multilingual_model,
-        MULTILINGUAL_MODEL_LOADED,
-    )
+    global chatterbox_model, MODEL_LOADED, model_device
+    global chatterbox_multilingual_model, MULTILINGUAL_MODEL_LOADED
 
     enable_multilingual = config_manager.get_bool(
         "tts_engine.multilingual_model_enabled", False
